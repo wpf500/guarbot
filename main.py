@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import json
+import json, nltk
 from collections import Counter, deque
 from bs4 import BeautifulSoup
 
@@ -20,10 +20,8 @@ for article in results:
     body = BeautifulSoup(article['fields']['body'], 'html5lib')
     texts += ' '.join(body.find_all(text=True)) + ' '
 
-words = texts.lower().split()
-for n in xrange(20):
-    phrases = tcc(words, n + 1)
-    print 'Phrase length %d' % n
-    for phrase, count in phrases.most_common(10):
-        if count > 1:
-            print '%s\t%d' % (phrase, count)
+sents = nltk.sent_tokenize(texts)
+words = [word for sent in sents for word in nltk.word_tokenize(sent)]
+
+for phrase, count in tcc(words, 5).most_common(20):
+    print '%d %s' % (count, phrase)
