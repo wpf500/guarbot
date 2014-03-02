@@ -1,1 +1,5 @@
 *.pyc
+*.json
+*.txt
+*.tags
+*.words
