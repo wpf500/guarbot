@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import nltk
+import sys
 from collections import Counter, deque
 
 def tcc(words, phrase_len):
@@ -11,10 +11,10 @@ def tcc(words, phrase_len):
 
     return phrases
 
-texts = open('monbiot.txt').read()
+words = sys.stdin.read().split()
 
-sents = nltk.sent_tokenize(texts)
-words = [word for sent in sents for word in nltk.word_tokenize(sent)]
+phrase_len = int(sys.argv[1])
+top_len = int(sys.argv[2])
 
-for phrase, count in tcc(words, 5).most_common(20):
+for phrase, count in tcc(words, phrase_len).most_common(top_len):
     print '%d %s' % (count, phrase)
