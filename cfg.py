@@ -33,13 +33,13 @@ for line in sys.stdin:
         for i in xrange(int(weight)):
             rules[rule_name].append(' '.join(rule_toks))
 
-# stop allowing unknown rule names
-rules.default_factory = None
-
-# non-terminals are all uppercase with underscores, at least 2 chars
-nt_re = re.compile('[A-Z_]{2,}')
+# non-terminals
+nt_re = re.compile('[A-Z][A-Z0-9_]*')
 def expand(m):
-    return nt_re.sub(expand, random.choice(rules[m.group(0)]))
+    s = m.group(0)
+    if s in rules:
+        return nt_re.sub(expand, random.choice(rules[s]))
+    return s
 
 # list possible expansions
 if sys.argv[1] == '-l':
