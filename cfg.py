@@ -35,14 +35,18 @@ for line in sys.stdin:
 
 # non-terminals
 nt_re = re.compile('[A-Z][A-Z0-9_]*')
-def expand(m):
+
+def expand_re(m):
     s = m.group(0)
     if s in rules:
-        return nt_re.sub(expand, random.choice(rules[s]))
+        return expand(random.choice(rules[s]))
     return s
+
+def expand(s):
+    return nt_re.sub(expand_re, s)
 
 # list possible expansions
 if sys.argv[1] == '-l':
     print '\n'.join(rules[sys.argv[2]])
 else:
-    print nt_re.sub(expand, sys.argv[1])
+    print expand(sys.argv[1])
