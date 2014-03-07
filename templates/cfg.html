@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text generator</title>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <style>
+        #rules {
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>Text generator</h1>
+        <form >
+            <div class="form-group">
+                <label for="rules">Rules</label>
+                <textarea id="rules" name="rules" class="form-control">{{ rules }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="base">Base rule</label>
+                <input type="text" id="base" name="base" class="form-control" />
+            </div>
+            <button class="btn btn-primary">
+                Submit <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
+        </form>
+
+        <h2>Results</h2>
+        {% for result in results %}
+            <p>{{ result }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
