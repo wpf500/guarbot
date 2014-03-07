@@ -1,4 +1,8 @@
-You'll need `nltk` and `bs4`
+```
+virtualenv venv
+. venv/bin/activate
+pip install -r requirements.txt
+```
 
 ## Getting the data
 Choose your search,

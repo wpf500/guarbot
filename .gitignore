@@ -1,5 +1,7 @@
+venv/
 *.pyc
 *.json
 *.txt
+!requirements.txt
 *.tags
 *.words
