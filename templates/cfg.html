@@ -27,9 +27,11 @@
         </form>
 
         <h2>Results</h2>
-        {% for result in results %}
-            <p>{{ result }}</p>
-        {% endfor %}
+        <ol>
+            {% for result in results %}
+                <li><p>{{ result }}</p></li>
+            {% endfor %}
+        </ol>
     </div>
 </body>
 </html>
