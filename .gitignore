@@ -1,7 +1,6 @@
 venv/
 *.pyc
-*.json
-*.txt
-!requirements.txt
-*.tags
-*.words
+data/*.json
+data/*.txt
+data/*.tags
+data/*.words
