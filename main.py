@@ -18,5 +18,6 @@ def handler():
     return render_template(
             'cfg.html',
             rules=rules,
+            base=base,
             results=results
         )
