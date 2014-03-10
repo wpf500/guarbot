@@ -1,6 +1,5 @@
 #!/usr/bin/python
-import sys, random
-from itertools import izip
+import sys
 from collections import defaultdict, deque
 
 def tcc(base_list, lookup_list, phrase_len, top_len):

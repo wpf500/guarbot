@@ -1,6 +1,5 @@
 #!/usr/bin/python
 import sys, random
-from itertools import izip
 from tcc import tcc
 
 tag_whitelist = ('JJ', 'NNP', 'VB')
