@@ -69,3 +69,12 @@ This is easy
 ```
 
 See also `examples.rules` (taken from SCIgen)
+
+### Generate rules based on text concordance: `tcc2rules.py`
+Generates some rules based on common proper nouns, adjectives and verbs in
+the given text
+
+```
+./tcc2rules <file name> > example.rules
+```
+Where `<file name>` is the same as for `./tcc.py`
