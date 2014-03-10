@@ -2,21 +2,20 @@
 import sys, random
 from tcc import tcc
 
-tag_whitelist = ('JJ', 'NNP', 'VB')
+tag_whitelist = ('JJ', 'NNP', 'VB', 'NN', 'CD')
 word_blacklist = ('@', '(', ')', 'GMT', 'be')
 IGNORE = '--IGNORE--'
 
 words = []
 tags = []
 for line in sys.stdin:
-    word, tag = line.split().rsplit('/', 1)
+    word, tag = line.strip().rsplit('/', 1)
 
     if tag in tag_whitelist and word not in word_blacklist:
         words.append(word)
         tags.append(tag)
     else:
-        # just stop it from matching
-        words.append(str(random.random()))
+        words.append(str(random.random())) # just stop it from matching
         tags.append(IGNORE)
 
 for phrase_len in range(1, 6):
@@ -26,9 +25,11 @@ for phrase_len in range(1, 6):
             if IGNORE in variation:
                 continue
 
-            if phrase_len == 1:
-                print variation, phrase
+            uniq = set(variation.split())
+            if len(uniq) == 1:
+                print uniq.pop(),
             elif 'NNP' in variation:
-                print 'NNP', phrase
+                print 'NNP',
             else:
-                print 'PHRASE', phrase
+                print 'PHRASE',
+            print phrase
