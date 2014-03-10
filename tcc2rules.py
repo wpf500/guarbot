@@ -18,8 +18,8 @@ for line in sys.stdin:
         words.append(str(random.random())) # just stop it from matching
         tags.append(IGNORE)
 
-for phrase_len in range(1, 6):
-    results = tcc(words, tags, phrase_len, 10)
+for phrase_len in range(1, 20):
+    results = tcc(words, tags, phrase_len, 15)
     for count, phrase, variations in results:
         for variation in variations:
             if IGNORE in variation:
