@@ -32,8 +32,10 @@ its tag to `stderr`
 ### Text concordance checker: `tcc.py`
 Most popular words/phrases by tag
 ```
-./tcc.py <file name> <phrase length> <results>
+./tcc.py -t|-w <file name> <phrase length> <results>
 ```
+`-t|-w`: check tags or words respectively
+
 `<results>`: number of different phrases to return
 
 ### Context-free grammar parser: `cfg.py`
