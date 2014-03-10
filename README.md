@@ -12,27 +12,27 @@ Then:
 ```
 wget <url> -O articles.json
 ./json2txt.py < articles.json > articles.txt
-./txt2tag.py < articles.txt > articles.words 2> articles.tags
+./txt2tag.py < articles.txt > articles.tags
 ```
 
 Or the quick way:
 ```
-wget <url> -O - | ./json2txt.py | ./txt2tag.py > articles.words 2> articles.tags
+wget <url> -O - | ./json2txt.py | ./txt2tag.py > articles.tags
 ```
 
 ### `json2txt.py`
 Extracts article content from the results of a Content API content search
 
 ### `txt2tag.py`
-Takes a body of text and tag each word, outputting each word to `stdout` and
-its tag to `stderr`
+Takes a body of text and tags each word, outputting a word and its tag to
+each line.
 
 ## Analysing the data
 
 ### Text concordance checker: `tcc.py`
 Most popular words/phrases by tag
 ```
-./tcc.py -t|-w <file name> <phrase length> <results>
+./tcc.py -t|-w <phrase length> <results> < <tagged words>
 ```
 `-t|-w`: check tags or words respectively
 
@@ -75,6 +75,5 @@ Generates some rules based on common proper nouns, adjectives and verbs in
 the given text
 
 ```
-./tcc2rules <file name> > example.rules
+./tcc2rules < <tagged words> > example.rules
 ```
-Where `<file name>` is the same as for `./tcc.py`

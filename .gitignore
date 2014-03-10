@@ -3,4 +3,3 @@ venv/
 data/*.json
 data/*.txt
 data/*.tags
-data/*.words

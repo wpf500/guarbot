@@ -19,29 +19,20 @@ def tcc(base_list, lookup_list, phrase_len, top_len):
 
 
 if __name__ == '__main__':
-    tag_whitelist = ('JJ', 'NNP', 'VB')
-    word_blacklist = ('@', '(', ')', 'GMT')
-
-    words = open('%s.words' % sys.argv[2]).read().split()
-    tags = open('%s.tags' % sys.argv[2]).read().split()
-
-    phrase_len = int(sys.argv[3])
-    top_len = int(sys.argv[4])
+    words = []
+    tags = []
+    for line in sys.stdin:
+        word, tag = line.strip().rsplit('/', 1)
+        words.append(word)
+        tags.append(tag)
 
     if sys.argv[1] == '-t':
-        base_list = tags
-        lookup_list = words
+        base_list, lookup_list = tags, words
     else:
-        base_list = []
-        lookup_list = []
-        for word, tag in izip(words, tags):
-            if tag in tag_whitelist and word not in word_blacklist:
-                base_list.append(word)
-                lookup_list.append(tag)
-            else:
-                # just stop it from matching
-                base_list.append(str(random.random()))
-                lookup_list.append('--IGNORE--')
+        base_list, lookup_list = words, tags
+
+    phrase_len = int(sys.argv[2])
+    top_len = int(sys.argv[3])
 
     results = tcc(base_list, lookup_list, phrase_len, top_len)
     for count, phrase, variations in results:
