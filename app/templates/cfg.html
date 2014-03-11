@@ -12,7 +12,7 @@
 <body>
     <div class="container-fluid">
         <h1>Text generator</h1>
-        <form >
+        <form>
             <div class="form-group">
                 <label for="rules">Rules</label>
                 <textarea id="rules" name="rules" class="form-control">{{ rules }}</textarea>
@@ -21,17 +21,18 @@
                 <label for="base">Base rule</label>
                 <input type="text" id="base" name="base" class="form-control" value="{{ base }}"/>
             </div>
-            <button class="btn btn-primary">
+            <button id="submit" class="btn btn-primary">
                 Submit <span class="glyphicon glyphicon-arrow-right"></span>
             </button>
         </form>
 
         <h2>Results</h2>
-        <ol>
+        <ol id="results">
             {% for result in results %}
                 <li><p>{{ result }}</p></li>
             {% endfor %}
         </ol>
     </div>
+    <script src="/static/cfg.js"></script>
 </body>
 </html>
