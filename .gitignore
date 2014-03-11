@@ -3,3 +3,4 @@ venv/
 data/*.json
 data/*.txt
 data/*.tags
+app/lib/
