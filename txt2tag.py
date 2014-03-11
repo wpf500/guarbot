@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 import sys, nltk
 
 sents = nltk.sent_tokenize(sys.stdin.read())
