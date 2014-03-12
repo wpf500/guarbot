@@ -17,7 +17,7 @@
         s.split('\n').forEach(function (line) {
             var toks = line.split(wsExp).filter(hasLength);
             if (toks.length > 0) {
-                ruleName = toks.shift();
+                var ruleName = toks.shift();
                 if (rules[ruleName] === undefined) {
                     rules[ruleName] = [];
                 }
