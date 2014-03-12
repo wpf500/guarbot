@@ -5,7 +5,7 @@
     var resultsEle = document.getElementById('results');
 
     var wsExp = /\s+/;
-    var ntExp = /[A-Z][A-Z0-9_]*/;
+    var ntExp = /[A-Z][A-Z0-9_]*/g;
 
     function hasLength(x) {
         return x.length > 0;
