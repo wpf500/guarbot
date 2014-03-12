@@ -3,7 +3,7 @@ import sys, random
 from tcc import tcc
 
 tag_whitelist = ('JJ', 'NNP', 'VB', 'NN', 'CD')
-word_blacklist = ('@', '(', ')', 'GMT', 'be')
+word_blacklist = ('@', '(', ')', 'GMT', 'be', '..')
 IGNORE = '--IGNORE--'
 
 words = []
