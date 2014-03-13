@@ -13,6 +13,6 @@ data = json.loads(sys.stdin.read())
 results = filter(lambda a: 'fields' in a, data['response']['results'])
 texts = ''
 for article in results:
-    texts += get_text(article['fields']['body']) + ' '
+    texts += get_text(article['fields'].get('body', '')) + ' '
 
 print texts.encode('ascii', 'ignore')
