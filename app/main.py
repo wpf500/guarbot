@@ -5,7 +5,7 @@ import cfg
 app = Flask(__name__)
 app.debug = True
 
-subjects = ['quinoa', 'mh370', 'crimea', 'selfie2']
+subjects = ['quinoa', 'selfie']
 
 def merge(a, b):
     for k, v in b.iteritems():
