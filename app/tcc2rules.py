@@ -2,7 +2,7 @@
 import sys, random
 from tcc import tcc
 
-tag_whitelist = ('JJ', 'NNP', 'VB', 'NN', 'CD')
+tag_whitelist = ('JJ', 'NNP', 'NNPS', 'VB', 'NN', 'CD')
 word_blacklist = ('@', '(', ')', 'GMT', 'be', '..')
 IGNORE = '--IGNORE--'
 
@@ -26,7 +26,7 @@ for phrase_len in range(1, 20):
                 continue
 
             uniq = set(variation.split())
-            if len(uniq) == 1:
+            if len(uniq) == 1 and variation != 'NN':
                 print uniq.pop(),
             elif 'NNP' in variation:
                 print 'NNP',

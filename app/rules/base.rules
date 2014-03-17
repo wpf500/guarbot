@@ -1,19 +1,62 @@
-START LEADING EXPAND
+# NNP proper noun
+# NN noun
+# NNS noun plural
+# VB verb
+# VBG verb-ing
+# VBD verb past tense
+# JJ adjective
 
-LEADING What is HAPPENING with SUBJECT?
-LEADING Big news TIME for SUBJECT.
-LEADING TIME I was thinking about SUBJECT.
+START LEADING EXPAND EXPAND EXPAND ENDING NOTE
+
+LEADING The JJ NN of SUBJECT has taken NNP by storm TIMEX.
+LEADING SUBJECT is NOW the JJS source of NN for NNPS, new REPORTS show.
+
+EXPAND Sources close to NNP CONFIRM that SUBJECT is causing NNS in NNP.
+EXPAND {
+    The REPORT suggests that SUBJECT is RB taking NNP by storm, with
+    CD NNS going as far as VBG it to NNP.
+}
+EXPAND At least CD NNP VBD that the problem is not as widespread as RB VBD.
+EXPAND {
+    But what is SUBJECT? According to NNP, NNP has CONFIRM that SUBJECT is
+    JJR NN than anything else before it.
+}
+EXPAND Experts say both NNP and NNP need to RB VB to VB a common solution.
+
+ENDING Quotes from JJ NNP NNS suggest that "PHRASE" is NOW RB JJ, possibly JJR than NN.
+ENDING {
+    In all, LESS than CD of the world's population VB that SUBJECT will VB
+    NNP to stop NN.
+}
+
+NOTE Finally, it is worth RB VBG that this article was VBD until it made sense.
+
+LESS less
+LESS more
+
+CONFIRM confirmed
+CONFIRM denied
+CONFIRM indicated
+CONFIRM reported
+
+REPORT report
+REPORT document
+
+REPORTS REPORTs
 
 HAPPENING going on
 HAPPENING happening
 HAPPENING progressing
 
+TIMEX for the first time TIME
+TIMEX TIME it is believed
+TIMEX TIME
+
 TIME today
-TIME yesterday
-TIME last week
+TIME this week
+TIME this month
 
-EXPAND It seems that NNP, NNP and NNP have COMBINED to VB NP.
-
-COMBINED combined
-COMBINED gotten together
-COMBINED decided
+NOW now
+NOW presently
+NOW currently
+NOW heretofore

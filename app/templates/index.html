@@ -4,6 +4,10 @@
     <title>Article generator</title>
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
     <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <style>
+        hr { margin-top: 10px; }
+        hr:last-child { display: none; }
+    </style>
 </head>
 <body>
     <div class="container-fluid">
@@ -31,6 +35,29 @@
         {% if article %}
             <h2>Results</h2>
             <p>{{ article }}</p>
+
+            <h3>Expansion</h3>
+            {% for rule_name, subtree, rule in tree recursive %}
+                <ul>
+                    <li>
+                        {{ rule_name }} - {{ rule }}
+                        {{ loop(subtree) }}
+                    </li>
+                </ul>
+            {% endfor %}
+
+            <h3>Rules</h3>
+            {% for rule, values in rules.iteritems() %}
+                <div class="row">
+                    <div class="col-sm-2 text-right"><b>{{ rule }}</b></div>
+                    <div class="col-sm-10">
+                        {% for value in values %}
+                            <p>{{ value }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <hr />
+            {% endfor %}
         {% endif %}
     </div>
 </body>
