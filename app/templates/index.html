@@ -17,10 +17,10 @@
                 <label for="subject" class="col-sm-2 control-label">Subject</label>
                 <div class="col-sm-10">
                     <select id="subject" class="form-control" name="subject">
-                        {% for s in subjects %}
-                            <option value="{{ s }}"
-                                {% if s == subject %} selected{% endif %}>
-                                {{ s|capitalize }}
+                        {% for value, text in subjects.iteritems() %}
+                            <option value="{{ value }}"
+                                {% if value == subject %} selected{% endif %}>
+                                {{ text }}
                             </option>
                         {% endfor %}
                     </select>
