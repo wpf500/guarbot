@@ -9,7 +9,7 @@ subjects = {
     'quinoa': 'Quinoa',
     'selfie': 'Selfie',
     'sexism': 'Sexism',
-    'psc': 'Pamela Stephenson Connelly'
+    'psc': 'Articles by Pamela Stephenson Connelly'
 }
 
 base_rules = cfg.read_rules(open('data/base.rules'))
