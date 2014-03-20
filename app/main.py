@@ -12,48 +12,28 @@ subjects = {
     'psc': 'Pamela Stephenson Connelly'
 }
 
-def merge(a, b):
-    for k, v in b.iteritems():
-        if k in a:
-            a[k].extend(v)
-        else:
-            a[k] = v
-
-tag_whitelist = [
-    'RB', 'CD', 'VB', 'VBD', 'VBG', 'VBZ', 'JJ', 'JJR', 'JJS',
-    'NN', 'NNS', 'NNP', 'NNPS'
-]
-word_blacklist = ['be', 'is', '\'s', '(', ')', 'was', 'n\'t', 'so', 'have', 'here']
-
-def generate_rules(subject):
-    rules = {}
-    words = collections.defaultdict(list)
-    for line in open('data/%s.tags' % subject):
-        word, tag = line.strip().rsplit('/', 1)
-        if word not in word_blacklist:
-            words[tag].append(word)
-    for t in tag_whitelist:
-        if len(words[t]) < 15:
-            rules[t] = words[t]
-        else:
-            rules[t] = random.sample(words[t], 15)
-    return rules
-
 base_rules = cfg.read_rules(open('data/base.rules'))
+
+def get_rules(subject):
+    rules = cfg.read_rules(open('data/%s.rules' % subject))
+    rules['SUBJECT'] = subject
+    # add base rules
+    for rule_name, rule in base_rules.iteritems():
+        if rule_name not in rules:
+            rules[rule_name] = []
+        rules[rule_name].extend(rule)
+    return rules
 
 @app.route('/')
 def index_handler():
     subject = request.args.get('subject', '')
-    rules = {}
-    article = ''
     tree = []
     if subject:
-        rules = generate_rules(subject)
-        rules['SUBJECT'] = [subject]
-        merge(rules, base_rules)
-        merge(rules, cfg.read_rules(open('data/%s.rules' % subject)))
-
+        rules = get_rules(subject)
         article = cfg.expand('START', rules, tree)
+    else:
+        rules = {}
+        article = ''
 
     return render_template('index.html',
         subjects=subjects, subject=subject,
