@@ -2,8 +2,6 @@
 import sys, collections, random
 from tcc import tcc
 
-sample_size = 15
-
 tag_whitelist = (
     'RB', 'CD', 'VB', 'VBD', 'VBG', 'VBZ', 'JJ', 'JJR', 'JJS',
     'NN', 'NNS', 'NNP', 'NNPS'
@@ -37,14 +35,12 @@ for line in sys.stdin:
 
 # print some single word rules
 for tag, tag_words in rules.iteritems():
-    if len(tag_words) >= sample_size:
-        tag_words = random.sample(tag_words, sample_size)
     for word in tag_words:
         print tag, word
 
 # print some more complicated phrases
 for phrase_len in range(2, 20):
-    results = tcc(words, tags, phrase_len, sample_size)
+    results = tcc(words, tags, phrase_len, 15)
     for count, phrase, variations in results:
         for variation in variations:
             if IGNORE in variation:
