@@ -37,16 +37,16 @@ def read_rules(f):
 # non-terminals
 nt_re = re.compile('[A-Z][A-Z0-9_]*')
 
-def expand(s, rules, tree):
+def expand(rule_name, rules, tree):
     def expand_re(m):
-        s = m.group(0)
-        if s in rules:
+        rule_name = m.group(0)
+        if rule_name in rules:
             subtree = []
-            selected_rule = random.choice(rules[s])
-            tree.append((s, subtree, selected_rule))
+            selected_rule = random.choice(rules[rule_name])
+            tree.append((rule_name, subtree, selected_rule))
             return expand(selected_rule, rules, subtree)
-        return s
-    return nt_re.sub(expand_re, s)
+        return rule_name
+    return nt_re.sub(expand_re, rule_name)
 
 if __name__ == '__main__':
     rules = read_rules(sys.stdin)
