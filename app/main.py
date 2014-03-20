@@ -9,14 +9,14 @@ subjects = {
     'quinoa': 'Quinoa',
     'selfie': 'Selfie',
     'sexism': 'Sexism',
-    'psc': 'Articles by Pamela Stephenson Connelly'
+    'psc': 'Pamela Stephenson Connelly'
 }
 
 base_rules = cfg.read_rules(open('data/base.rules'))
 
 def get_rules(subject):
     rules = cfg.read_rules(open('data/%s.rules' % subject))
-    rules['SUBJECT'] = [subject]
+    rules['SUBJECT'] = [subjects[subject]]
     # add base rules
     for rule_name, rule in base_rules.iteritems():
         if rule_name not in rules:
