@@ -1,9 +1,4 @@
-(function () {
-    var rulesEle = document.getElementById('rules');
-    var baseEle = document.getElementById('base');
-    var submitEle = document.getElementById('submit');
-    var resultsEle = document.getElementById('results');
-
+var cfg = (function () {
     var wsExp = /\s+/;
     var ntExp = /[A-Z][A-Z0-9_]*/g;
 
@@ -39,14 +34,8 @@
         });
     }
 
-    submitEle.addEventListener('click', function (evt) {
-        var rules = parse(rulesEle.value);
-
-        resultsEle.innerHTML = '';
-        for (var i = 0; i < 10; i++) {
-            resultsEle.innerHTML += '<li><p>' + expand(baseEle.value, rules) + '</p></li>';
-        }
-
-        evt.preventDefault();
-    });
+    return {
+        'parse': parse,
+        'expand': expand
+    }
 })();

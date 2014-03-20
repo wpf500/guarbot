@@ -16,11 +16,11 @@
         <form>
             <div class="form-group">
                 <label for="rules">Rules</label>
-                <textarea id="rules" name="rules" class="form-control">{{ rules }}</textarea>
+                <textarea id="rules" name="rules" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label for="base">Base rule</label>
-                <input type="text" id="base" name="base" class="form-control" value="{{ base }}"/>
+                <input type="text" id="base" name="base" class="form-control" />
             </div>
             <button id="submit" class="btn btn-primary">
                 Generate <span class="glyphicon glyphicon-arrow-right"></span>
@@ -28,12 +28,9 @@
         </form>
 
         <h2>Results</h2>
-        <ol id="results">
-            {% for result in results %}
-                <li><p>{{ result }}</p></li>
-            {% endfor %}
-        </ol>
+        <ol id="results"></ol>
     </div>
     <script src="/static/cfg.js"></script>
+    <script src="/static/cfg_main.js"></script>
 </body>
 </html>

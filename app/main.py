@@ -41,11 +41,4 @@ def index_handler():
 
 @app.route('/cfg')
 def cfg_handler():
-    rules = request.args.get('rules', '')
-    base = request.args.get('base', '')
-    results = []
-    if len(rules):
-        cfg_rules = cfg.read_rules(rules.split('\n'))
-        results = [cfg.expand(base, cfg_rules) for i in xrange(10)]
-
-    return render_template('cfg.html', rules=rules, base=base, results=results)
+    return render_template('cfg.html')
