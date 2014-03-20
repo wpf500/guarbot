@@ -23,12 +23,14 @@ var cfg = (function () {
         return rules;
     }
 
-    function expand(baseRule, rules) {
+    function expand(baseRule, rules, tree) {
         return baseRule.replace(ntExp, function (ruleName) {
             var rule = rules[ruleName];
             if (rule !== undefined) {
                 var i = Math.floor(Math.random() * rule.length);
-                return expand(rule[i], rules);
+                var subtree = [];
+                tree.push([ruleName, subtree, rule[i]]);
+                return expand(rule[i], rules, subtree);
             }
             return ruleName;
         });

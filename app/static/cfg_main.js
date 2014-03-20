@@ -10,7 +10,7 @@
         resultsEle.innerHTML = '';
         for (var i = 0; i < 10; i++) {
             resultsEle.innerHTML +=
-                '<li><p>' + cfg.expand(baseEle.value, rules) + '</p></li>';
+                '<li><p>' + cfg.expand(baseEle.value, rules, []) + '</p></li>';
         }
 
         evt.preventDefault();
