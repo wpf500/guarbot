@@ -1,6 +1,5 @@
 venv/
 *.pyc
-data/*.json
-data/*.txt
-data/*.tags
+data/
+!app/data/base.rules
 app/lib/

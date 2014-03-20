@@ -39,7 +39,7 @@ def generate_rules(subject):
             rules[t] = random.sample(words[t], 15)
     return rules
 
-base_rules = cfg.read_rules(open('rules/base.rules'))
+base_rules = cfg.read_rules(open('data/base.rules'))
 
 @app.route('/')
 def index_handler():
@@ -51,7 +51,7 @@ def index_handler():
         rules = generate_rules(subject)
         rules['SUBJECT'] = [subject]
         merge(rules, base_rules)
-        merge(rules, cfg.read_rules(open('rules/%s.rules' % subject)))
+        merge(rules, cfg.read_rules(open('data/%s.rules' % subject)))
 
         article = cfg.expand('START', rules, tree)
 
