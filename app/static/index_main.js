@@ -17,8 +17,6 @@
         '<hr />'
     ].join('');
 
-    var valuesTemplate = '<p>{value}</p>';
-
     var expansionTemplate = [
         '<ul>',
             '<li>',
@@ -85,7 +83,7 @@
                         .replace('{rule_name}', ruleName)
                         .replace('{values}',
                             rules[ruleName].map(function (value) {
-                                return valuesTemplate.replace('{value}', value);
+                                return '<p>' + value + '</p>';
                             }).join('')
                         );
                 }
