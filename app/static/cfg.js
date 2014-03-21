@@ -29,7 +29,7 @@ var cfg = (function () {
             if (rule !== undefined) {
                 var i = Math.floor(Math.random() * rule.length);
                 var subtree = [];
-                tree.push([ruleName, subtree, rule[i]]);
+                tree.push([ruleName, rule[i], subtree]);
                 return expand(rule[i], rules, subtree);
             }
             return ruleName;
