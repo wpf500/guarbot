@@ -1,5 +1,5 @@
 venv/
 *.pyc
 data/
-!app/data/base.rules
+!data/base.rules
 app/lib/
