@@ -47,7 +47,6 @@
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     var rules = JSON.parse(xhr.responseText);
-                    rules['SUBJECT'] = [subject];
                     subjects[subject] = rules;
                     callback(rules);
                 }
@@ -69,10 +68,13 @@
     }
 
     submitEle.addEventListener('click', function (evt) {
+        var subjectLabel = subjectEle.options[subjectEle.selectedIndex].innerHTML;
         loadRules(subjectEle.value, function (subjectRules) {
             var rules = mergeRules(baseRules, subjectRules);
             var tree = [];
             var rulesHTML = '';
+
+            rules['SUBJECT'] = [subjectLabel];
 
             articleEle.innerHTML = cfg.expand('START', rules, tree);
             expansionEle.innerHTML = printExpansion(tree);
